@@ -22,3 +22,13 @@ before_script:
 
 script:
   - mdbook build ./book
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: build mdbook
+      run: mdbook build ./book
