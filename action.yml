@@ -1,0 +1,16 @@
+---
+name: "rust-mdbook"
+description: "build rust mdbook outputs"
+inputs:
+  inputDir:
+    description: 'mdbook input directory'
+    required: false
+  outputDir:
+    description: 'mdbook output directory'
+    required: false
+branding:
+  icon: 'book-open'
+  color: 'purple'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
