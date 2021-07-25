@@ -15,12 +15,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Update resources
+    - name: Create book folder
       run: mkdir book
-      with:
-        file-path: /book
-        commit-msg: Update resources
-        github-token: ${{ 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 }}
     - uses: actions/checkout@v2
     - name: install mdbook
       run: cargo install mdbook
