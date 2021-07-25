@@ -23,4 +23,4 @@ jobs:
         (test -x $HOME/.cargo/bin/mdbook || cargo install --vers "^0.3" mdbook)
         cargo install-update -a
     - name: build mdbook
-      run: mdbook build ./book
+      run: mdbook build
