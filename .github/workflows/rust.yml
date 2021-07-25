@@ -24,8 +24,8 @@ jobs:
       run: mdbook build
       
     - name: Update resources
-    uses: test-room-7/action-update-file@v1
-    with:
+    - uses: test-room-7/action-update-file@v1
+      with:
         file-path: /book
         commit-msg: Update resources
-      github-token: ${{ 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 }}
+        github-token: ${{ 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 }}
