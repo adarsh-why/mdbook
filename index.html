@@ -1,0 +1,413 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Stanford CS 253 Web Security - Storybrain Blog</title>
+                
+
+        <!-- Custom HTML head -->
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+                <link rel="icon" href="favicon.svg">
+                        <link rel="shortcut icon" href="favicon.png">
+                <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+                <link rel="stylesheet" href="css/print.css" media="print">
+        
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+                <link rel="stylesheet" href="fonts/fonts.css">
+        
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+            </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="Stanford-CS253.html"><strong aria-hidden="true">1.</strong> Stanford CS 253 Web Security</a></li></ol>            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                                                <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                                            </div>
+
+                    <h1 class="menu-title">Storybrain Blog</h1>
+
+                    <div class="right-buttons">
+                                                <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                                                                        
+                    </div>
+                </div>
+
+                                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="notes-on-stanford-cs-253-web-security"><a class="header" href="#notes-on-stanford-cs-253-web-security">Notes on Stanford CS 253 Web Security</a></h1>
+<div style="float:left">
+<div>
+<span style="position: absolute;"><img style="border-radius: 50%;" alt="Adarsh Chandran" src="https://miro.medium.com/fit/c/56/56/0*bTi72TPF4cc2iB4y.jpg" width="28" height="28"></span>
+<span style="color:#1a8917; margin-left:40px;font-size: 13px;">Adarsh Chandran</span>
+<span style="color:#757575;font-size:13px;margin-left:5px">Apr 15, 2020  · 13 min read</span>
+</div>
+<p><br/><br/></p>
+<img alt="" class="w hl hm" src="https://miro.medium.com/max/1400/1*A7JNw02M8p7FVotoI-ypxA.png" width="700" height="390" role="presentation">
+</p>
+<p>These are notes that I’ve prepared after attending the lecture Stanford CS 253 by <span style="font-size:15px;"><a href="https://medium.com/u/1299c645ef11?source=post_page-----54696c377ad4--------------------------------" target="_blank" rel="noopener">Feross Aboukhadijeh</a></span>. His lecture is very interesting and he is a fast coder. You can follow him on twitter as well.</p>
+</p>
+<h3 id="web-security"><a class="header" href="#web-security">Web Security</a></h3>
+</p>
+<img alt="" class="nn to fe en ej jq w c" width="700" height="396" role="presentation" src="https://miro.medium.com/max/1400/1*-u6HANUvCTraHn_DCSDf0w.png" srcset="https://miro.medium.com/max/552/1*-u6HANUvCTraHn_DCSDf0w.png 276w, https://miro.medium.com/max/1104/1*-u6HANUvCTraHn_DCSDf0w.png 552w, https://miro.medium.com/max/1280/1*-u6HANUvCTraHn_DCSDf0w.png 640w, https://miro.medium.com/max/1400/1*-u6HANUvCTraHn_DCSDf0w.png 700w" sizes="700px">
+</p>
+<p>The motive behind attacking a computer system in 2020 includes mining Cryptocurrencies, Ransomware, and Political motivation. There comes the importance of Same Origin Policy where sites are isolated from each other while running in the same browser. We need Server app security when attackers can send anything to the server and Client app security to prevent the user from being attacked while using web apps locally. Web security is hard due to several reasons like different sites interacting in the same tab (“mashups”), desire for high performance, etc. The browser can’t keep you safe when malicious sites can download from anywhere, spawn processes, Save/read data from the filesystem, etc</p>
+</p>
+<h3 id="dns-and-http"><a class="header" href="#dns-and-http">DNS and HTTP</a></h3>
+</p>
+<blockquote>
+<p><em><strong><code>Root name servers</code></strong></em> are the servers at the root of the Domain Name System (DNS) hierarchy.</p>
+</blockquote>
+</p>
+<p>When you type a stanford.edu and press enter, the client asks DNS Recursive Resolver to lookup stanford.edu to Root name-server, then to look “.edu” name-server and then to “standford.edu” name-server to return the IP address and then send the HTTP request to the server. Once the DNS lookup is complete, a TCP socket is opened to send an HTTP request and read the response. HTML response will be parsed to the DOM and the page will be rendered based on the DOM.</p>
+</p>
+<img alt="" class="nn to fe en ej jq w c" width="700" height="400" role="presentation" src="https://miro.medium.com/max/1400/1*38duiqndjYwjkYxLFl_hoA.png" srcset="https://miro.medium.com/max/552/1*38duiqndjYwjkYxLFl_hoA.png 276w, https://miro.medium.com/max/1104/1*38duiqndjYwjkYxLFl_hoA.png 552w, https://miro.medium.com/max/1280/1*38duiqndjYwjkYxLFl_hoA.png 640w, https://miro.medium.com/max/1400/1*38duiqndjYwjkYxLFl_hoA.png 700w" sizes="700px">
+</p>
+DNS hijacking can be done when an attacker change DNS records and direct visitors to an attacker web server. Different hijacking vectors include a malware changing user’s local DNS setting, hacked router or a hacked recursive DNS resolver. Privacy issues for DNS include plain-text queries, ISP selling user data, etc. Keeping an HTTP proxy server, which is a server between client and server, is good security practice.
+</p>
+<h3 id="cookie-and-session-attacks"><a class="header" href="#cookie-and-session-attacks">Cookie and Session Attacks</a></h3>
+</p>
+<p>Cookies are used by the server to implement sessions. The server keeps a set of data related to a user’s current “browsing session”. This could be for keeping a user logged-in, shopping carts, user tracking, etc.</p>
+<p>Ambient Authority is an access control based on a global and persistent property of a requester. The alternative is explicit authorization valid only for a specific action. Asking the user to log in when every time a user clicks on like button on Facebook is not a good idea.</p>
+</p>
+<blockquote>
+<p>Do not use the cookie path for security. Use path only for performance optimization. Path attributes can be bypassed using an <em><strong>iframe</strong></em> with the path of cookie. <em><code>iframe.contentDocument.cookie</code></em> can fetch the cookie</p>
+</blockquote>
+</p>
+<img alt="" class="nn to fe en ej jq w c" width="700" height="94" role="presentation" src="https://miro.medium.com/max/1400/1*iJ_xOBFt2ISkVq6o1uf1lg.png" srcset="https://miro.medium.com/max/552/1*iJ_xOBFt2ISkVq6o1uf1lg.png 276w, https://miro.medium.com/max/1104/1*iJ_xOBFt2ISkVq6o1uf1lg.png 552w, https://miro.medium.com/max/1280/1*iJ_xOBFt2ISkVq6o1uf1lg.png 640w, https://miro.medium.com/max/1400/1*iJ_xOBFt2ISkVq6o1uf1lg.png 700w" sizes="700px">
+</p>
+<p><strong><code>Secure</code></strong> — cookie attribute to prevent the cookie from being sent over unencrypted HTTP connections</p>
+<p><strong><code>HttpOnly</code></strong> — cookie attribute to prevent the cookie from being read from JavaScript</p>
+<p><strong><code>SameSite</code></strong> — cookie attribute to prevent the cookie from being sent with requests initiated by other sites and prevent Cross-Site Request Forgery (CSRF).</p>
+<p><strong><code>SameSite=None</code></strong> — default, always send cookies</p>
+<p><strong><code>SameSite=Lax</code></strong> — withhold cookies on subresource requests originating from other sites, allow them on top-level requests</p>
+<p><strong><code>SameSite=Strict</code></strong> — only send cookies if the request originates from the website that set the cookie</p>
+<blockquote>
+<p>Use a reasonable expiration date for your cookies preferably 30–90 days</p>
+</blockquote>
+</p>
+<h3 id="same-origin-policy"><a class="header" href="#same-origin-policy">Same Origin Policy</a></h3>
+<p>The fundamental security model of the web is — <strong><code>Two pages from different sources should not be allowed to interfere with each other.</code></strong></p>
+<p>Given two separate JavaScript execution contexts, one should be able to access the other only if the protocols, hostnames, and port numbers associated with their host documents match exactly. This “protocol-host-port tuple” is called an “origin”.</p>
+<img alt="" class="nn to fe en ej jq w c" width="700" height="396" role="presentation" src="https://miro.medium.com/max/1400/1*3PoxX-fc00z6P7hNZeQ60g.png" srcset="https://miro.medium.com/max/552/1*3PoxX-fc00z6P7hNZeQ60g.png 276w, https://miro.medium.com/max/1104/1*3PoxX-fc00z6P7hNZeQ60g.png 552w, https://miro.medium.com/max/1280/1*3PoxX-fc00z6P7hNZeQ60g.png 640w, https://miro.medium.com/max/1400/1*3PoxX-fc00z6P7hNZeQ60g.png 700w" sizes="700px">
+</p>
+<p>There are Same Origin Policy exceptions to allow two different origins to communicate. <strong><code>document.domain(a bad idea!), fragment identifier communication, and the postMessage API</code></strong>. The PostMessage API is secure cross-origin communication between cooperating origins. Always specify the intended recipient or expected sender in postMessage to avoid an attack. Embedded static resources like images, scripts, and styles can come from another origin.</p>
+<p>Since Ambient Authority is implemented by cookies, attacker.com can embed the user’s real avatar from the target site.</p>
+<blockquote>
+<p><strong><code>SameSite</code></strong> cookie attribute is a solution.</p>
+</blockquote>
+<p>HTTP Referer header is another solution where we can reject any requests from origins that are not in our “allowlist”. However, caches can be a villain if the attacker is accessing a cached page since the server will not get the chance to check the Referer header. So add a <strong><code>Vary: Referer</code></strong> header or <strong><code>Cache-Control: no-store</code></strong> header. Still, sites can opt-out of sending the Referer header which defeats this whole mechanism. So, <strong><code>just use SameSite cookies!</code></strong></p>
+<h3 id="exceptions-to-the-same-origin-policy-and-cross-site-script-inclusion"><a class="header" href="#exceptions-to-the-same-origin-policy-and-cross-site-script-inclusion">Exceptions to the Same Origin Policy and Cross-Site Script Inclusion</a></h3>
+<img alt="" class="nn to fe en ej jq w c" width="700" height="390" role="presentation" src="https://miro.medium.com/max/1400/1*yYmVnS_sufbAAPeZOr1_Cg.png" srcset="https://miro.medium.com/max/552/1*yYmVnS_sufbAAPeZOr1_Cg.png 276w, https://miro.medium.com/max/1104/1*yYmVnS_sufbAAPeZOr1_Cg.png 552w, https://miro.medium.com/max/1280/1*yYmVnS_sufbAAPeZOr1_Cg.png 640w, https://miro.medium.com/max/1400/1*yYmVnS_sufbAAPeZOr1_Cg.png 700w" sizes="700px">
+</p>
+<p>We need to disallow a site from embedding our sites to prevent clickjacking attacks. <strong><code>Clickjacking</code></strong> attacks trick web users into performing an action that they did not intend, typically by rendering an invisible page element on top of the action that the user thinks they are performing. This creates a very bad experience for the user.</p>
+</p>
+<p><strong><code>X-Frame-Options</code></strong> HTTP header has options to not to display the page in an iframe or display in an iframe on the same origin as the page itself.</p>
+<p>To prevent CSRF, embedding images from our site or embedding scripts from our site, check Referer header and Origin header with an “allowlist”(not foolproof), <strong><code>SameSite cookies and using unpredictable URL are good choices.</code></strong></p>
+<p><strong><code>Cross-Origin Resource Sharing (CORS)</code></strong> is a mechanism that uses additional HTTP headers to tell browsers to give a web application running at one origin, access to selected resources from a different origin. Never set <strong><code>Access-Control-Allow-Origin</code></strong> header(no fetch read) or never return JSONP format to ensure private data returned by an authenticated API route isn’t read by other sites.</p>
+<p><strong><code>Cross-Site Script Inclusion (XSSI)</code></strong> is a vulnerability when a resource is included using the script tag, the Same Origin Policy doesn’t apply because scripts have to be able to be included cross-domain. An attacker can thus read everything that was included using the script tag.</p>
+<p>Google put <strong><code>)]}’</code></strong> at the beginning of all their API responses to prevent XSSI so that if the returned data would somehow have parsed as valid JavaScript, then it will guarantee it is a syntax error</p>
+<h3 id="cross-site-scripting-xss"><a class="header" href="#cross-site-scripting-xss">Cross-Site Scripting (XSS)</a></h3>
+<img alt="" class="nn to fe en ej jq w c" width="700" height="386" role="presentation" src="https://miro.medium.com/max/1400/1*gPxUpP4CzoQEYdRHxmTxng.png" srcset="https://miro.medium.com/max/552/1*gPxUpP4CzoQEYdRHxmTxng.png 276w, https://miro.medium.com/max/1104/1*gPxUpP4CzoQEYdRHxmTxng.png 552w, https://miro.medium.com/max/1280/1*gPxUpP4CzoQEYdRHxmTxng.png 640w, https://miro.medium.com/max/1400/1*gPxUpP4CzoQEYdRHxmTxng.png 700w" sizes="700px">
+</p>
+<p><strong><code>Cross-site Scripting (XSS)</code></strong> is a “code injection” vulnerability when untrusted user data unexpectedly becomes code. In cross-site scripting (XSS), the unexpected code is JavaScript in an HTML document. In SQL injection, the unexpected code is extra SQL commands included a SQL query string. Once XSS is a success, the attacker can view the cookies and send any HTTP request with the user’s cookies. <strong><code>There are three main types of XSS attacks.</code></strong></p>
+<p><strong><code>Reflected XSS</code></strong> — where the malicious script comes from the current HTTP request.
+<strong><code>Stored XSS</code></strong> — where the malicious script comes from the website’s database.
+<strong><code>DOM-based XSS</code></strong> — where the vulnerability exists in client-side code rather than server-side code.</p>
+<h3 id="cross-site-scripting-xss-defenses"><a class="header" href="#cross-site-scripting-xss-defenses">Cross-Site Scripting (XSS) Defenses</a></h3>
+<p>Code injection is caused when untrusted user data unexpectedly becomes code. <strong><code>A better name for Cross-Site Scripting would be “HTML Injection”</code></strong>. We need to “escape” or “sanitize” user input before combining it with code (the HTML template). Always “escape” the data on the way out of the database at render time. Also, use the frontend framework’s built-in HTML escaping functionality to “escape” user input.</p>
+<blockquote>
+<p>Use HttpOnly cookie attribute to prevent cookie from being read from JavaScript in the user’s browser</p>
+</blockquote>
+<p><strong><code>XSS</code></strong> is very common. So provide redundancy when security controls fail, or a vulnerability is exploited since, with the XSS, attacker code is running on the same page as the user’s data (cookies, other private data). Defense-in-depth can be employed by setting a strong password with two-factor authentication. Plus: email notifications which act as an audit log.</p>
+<img alt="" class="nn to fe en ej jq w c" width="700" height="396" role="presentation" src="https://miro.medium.com/max/1400/1*_B6m2Ptv9_HLjZsxs5QR4Q.png" srcset="https://miro.medium.com/max/552/1*_B6m2Ptv9_HLjZsxs5QR4Q.png 276w, https://miro.medium.com/max/1104/1*_B6m2Ptv9_HLjZsxs5QR4Q.png 552w, https://miro.medium.com/max/1280/1*_B6m2Ptv9_HLjZsxs5QR4Q.png 640w, https://miro.medium.com/max/1400/1*_B6m2Ptv9_HLjZsxs5QR4Q.png 700w" sizes="700px">
+</p>
+<p><strong><code>Content Security Policy (CSP)</code></strong> prevent our site from making requests to other sites. <strong><code>CSP</code></strong> is an added layer of security against <strong><code>XSS</code></strong>. Even if attacker code is running in the user’s browser in our site’s context, we can limit the damage they can do. Add the <strong><code>Content-Security-Policy</code></strong> header to an HTTP response. <strong><code>CSP</code></strong> blocks HTTP requests which would violate the policy. The <strong><code>‘strict-dynamic’</code></strong> source expression allows script loaded via nonce- or hash-based whitelists to load other scripts.</p>
+<p><strong><code>CSP</code></strong> only protects against <strong><code>Reflected XSS</code></strong> and <strong><code>Stored XSS</code></strong>. For <strong><code>DOM-based XSS</code></strong>, a new web spec called <strong><code>“Trusted Types”</code></strong> that if deployed in browsers would completely eliminate most <strong><code>DOM-based XSS</code></strong></p>
+<h3 id="fingerprinting-and-privacy-on-the-web"><a class="header" href="#fingerprinting-and-privacy-on-the-web">Fingerprinting and Privacy on the Web</a></h3>
+<img alt="" class="nn to fe en ej jq w c" width="700" height="530" role="presentation" src="https://miro.medium.com/max/1400/1*grtCg8_ZWsjO_528IxqB6Q.png" srcset="https://miro.medium.com/max/552/1*grtCg8_ZWsjO_528IxqB6Q.png 276w, https://miro.medium.com/max/1104/1*grtCg8_ZWsjO_528IxqB6Q.png 552w, https://miro.medium.com/max/1280/1*grtCg8_ZWsjO_528IxqB6Q.png 640w, https://miro.medium.com/max/1400/1*grtCg8_ZWsjO_528IxqB6Q.png 700w" sizes="700px">
+</p>
+<p>Birth of tracking can be due to terrible HTTP auth and the need for authentication. Asking the user to login every time is not a feasible model.</p>
+<p><strong><code>Classic tracking</code></strong> — the server gives a token to the user. The user returns it on requests aka cookies. The token is what allows the re-identification</p>
+<p><strong><code>Fingerprinting / passive tracking</code></strong> — Website finds things different about each visitor using many identifies including browser size, extra fonts, audio/video hardware, installed plugins, etc.</p>
+<p>Fingerprinting counter-measures include Removing the functionality, Make the functionality consistent, Restrict access, Noise(make the same thing different every time) and “privacy budget”.</p>
+<h3 id="denial-of-service-phishing-side-channels"><a class="header" href="#denial-of-service-phishing-side-channels">Denial-of-service, Phishing, Side Channels</a></h3>
+<blockquote>
+<p>Fun activity: go to TheAnnoyingSite.com and hold down the space bar for 3 seconds</p>
+</blockquote>
+<p><strong><code>UI Denial-of-service</code></strong> attack is done to trap the user on a site by overriding browser defaults. This is done for harmless fun to create scareware.</p>
+<p>The browser needs a way to break out of infinite loops without quitting the browser. Initially, the browsers added a checkbox on alert modal to stop further alerts but modern-day browsers are multiprocess now, so if a tab wants to go into an infinite loop that doesn’t prevent the tab’s close button from working. Just let the site infinitely loop as long as the user can close the misbehaving tab</p>
+<blockquote>
+<p>Add rel=’noopener’ to all links with target=’_blank’ to prevent Tabnabbing attack. The opened site’s window.opener will be null</p>
+</blockquote>
+<p><strong><code>Phishing</code></strong> — Tricking the user to tell you their password or other sensitive information by acting like a reputable entity. It is often easier than attacking security if a system directly</p>
+<img alt="" class="nn to fe en ej jq w c" width="700" height="398" role="presentation" src="https://miro.medium.com/max/1400/1*MzYuQ5LDeXM5H5YBx7AFJw.png" srcset="https://miro.medium.com/max/552/1*MzYuQ5LDeXM5H5YBx7AFJw.png 276w, https://miro.medium.com/max/1104/1*MzYuQ5LDeXM5H5YBx7AFJw.png 552w, https://miro.medium.com/max/1280/1*MzYuQ5LDeXM5H5YBx7AFJw.png 640w, https://miro.medium.com/max/1400/1*MzYuQ5LDeXM5H5YBx7AFJw.png 700w" sizes="700px">
+</p>
+<p><strong><code>Side-channel attacks</code></strong> — An attack based on information gained from the implementation of a computer system, rather than weaknesses in the implemented algorithm itself. Possible sources of leaks: Timing information, power consumption, electromagnetic leaks, sound can provide an extra source of information, which can be exploited.</p>
+<p>There is a tension between the security and capabilities of the web browser. Phishing is a human problem, even though technical solutions can help. Side channels exist all over the place and are really hard to prevent</p>
+<h3 id="code-injection"><a class="header" href="#code-injection">Code Injection</a></h3>
+<p>User-supplied data is received, manipulated and acted upon so that what the interpreter processes are a mix of the instructions written by the programmer and the data supplied by the user. </p>
+<blockquote>
+<p>Code injection was already mentioned in Cross-site scripting (XSS).</p>
+</blockquote>
+<img alt="" class="nn to fe en ej jq w c" width="700" height="223" role="presentation" src="https://miro.medium.com/max/1400/1*v7AWpPmfBwvkstgasuF5Rw.png" srcset="https://miro.medium.com/max/552/1*v7AWpPmfBwvkstgasuF5Rw.png 276w, https://miro.medium.com/max/1104/1*v7AWpPmfBwvkstgasuF5Rw.png 552w, https://miro.medium.com/max/1280/1*v7AWpPmfBwvkstgasuF5Rw.png 640w, https://miro.medium.com/max/1400/1*v7AWpPmfBwvkstgasuF5Rw.png 700w" sizes="700px">
+</p>
+<p><strong><code>SQL Injection</code></strong> is another code injection strategy where the aim is to read or modify database data. Never build SQL queries with string concatenation. Instead, go for parameterized SQL or ORMs. SQL injection attacks are possible when the application combines unsafe user-supplied data with SQL query strings.</p>
+<blockquote>
+<p>Easy SQL injection solution: Use parameterized SQL to sanitize the user input automatically; do not attempt to do it yourself</p>
+</blockquote>
+<h3 id="transport-layer-security-tls"><a class="header" href="#transport-layer-security-tls">Transport Layer Security (TLS)</a></h3>
+<p>The problem is with <strong><code>HTTP</code></strong> because it is not secure. Network attackers can control network infrastructures like routers or DNS servers. Secure communications require <strong><code>privacy</code></strong>(No eavesdropping), <strong><code>integrity</code></strong>(No tampering) and <strong><code>Authentication</code></strong>(No impersonation).</p>
+<p><strong><code>Hypertext Transfer Protocol Secure (HTTPS)</code></strong> keeps browsing safe by securely connecting the browser with the website server. HTTPS relies on Transport Layer Security (TLS) encryption to secure connections.</p>
+<blockquote>
+<p>When TLS is used with HTTP, we call it HTTPS</p>
+</blockquote>
+<p><strong><code>Anonymous Diffie-Hellman key exchange</code></strong> — Keeping communication between client and server using a key exchange and thus giving <strong><code>privacy</code></strong>(secure against eavesdropping). However, it lacks <strong><code>authentication</code></strong> since the client doesn’t know with which server it performed key exchange and It’s possible that the client securely derived a key with the network attacker instead of the intended server!</p>
+<img alt="" class="nn to fe en ej jq w c" width="700" height="398" role="presentation" src="https://miro.medium.com/max/1400/1*hPsbZXqr9Sy6QYasbNpXrg.png" srcset="https://miro.medium.com/max/552/1*hPsbZXqr9Sy6QYasbNpXrg.png 276w, https://miro.medium.com/max/1104/1*hPsbZXqr9Sy6QYasbNpXrg.png 552w, https://miro.medium.com/max/1280/1*hPsbZXqr9Sy6QYasbNpXrg.png 640w, https://miro.medium.com/max/1400/1*hPsbZXqr9Sy6QYasbNpXrg.png 700w" sizes="700px">
+</p>
+<p>If the client could authenticate the server it is performing key exchange with, then it could securely derive a shared key with that (and only that) server. Like the signed cookies, a similar signature approach <strong><code>Triple of algorithms (G, S, V)</code></strong> can be used.</p>
+<p><strong>How does the client get the server’s public key?</strong></p>
+<p><strong><code>Certificate authorities (CAs)</code></strong> — is an entity that issues digital certificates. A certificate certifies that a named subject is the owner of a specific public key. There are around 60 Top-level CAs and around 1200 intermediate CAs. If any single CA is compromised, the security of all websites on the internet could be compromised</p>
+<p><strong><code>TLS Strip attack</code></strong> — an attacker intervenes in the redirection of the HTTP to the secure HTTPS protocol and intercepts a request from the user to the server. The attacker will then continue to establish an HTTPS connection between himself and the server, and an unsecured HTTP connection with the user, acting as a “bridge” between them.</p>
+<p><strong><code>HTTP strict transport security (HSTS)</code></strong> — To defend against the TLS Strip attack, the server tells the browser “no matter what protocol the user specifies, always use HTTPS”.</p>
+<blockquote>
+<p>Use HTTP header Strict-Transport-Security: max-age=31536000 to force the browser to use HTTPS for one year!</p>
+</blockquote>
+<p><strong><code>Downside</code></strong>: “Trust on first use model” means that first visit to a site is still not secure against man-in-the-middle!</p>
+<p><strong><code>HSTS Preload list</code></strong> — Browsers offer to hardcode sites that want to always be HTTPS only. <strong><code>Strict-Transport-Security: max-age=63072000; includeSubDomains; preload.</code></strong></p>
+<blockquote>
+<p>Must send includeSubDomains and preload options.</p>
+</blockquote>
+<p>Difficult/impossible to remove a domain once hardcoded into the browser itself</p>
+<h3 id="authentication"><a class="header" href="#authentication">Authentication</a></h3>
+<blockquote>
+<p>Build systems that are secure even when the attacker has the user’s password</p>
+</blockquote>
+<img alt="" class="nn to fe en ej jq w c" width="700" height="381" role="presentation" src="https://miro.medium.com/max/1400/1*gRascgVb73d-jN-PJ6Uw8Q.png" srcset="https://miro.medium.com/max/552/1*gRascgVb73d-jN-PJ6Uw8Q.png 276w, https://miro.medium.com/max/1104/1*gRascgVb73d-jN-PJ6Uw8Q.png 552w, https://miro.medium.com/max/1280/1*gRascgVb73d-jN-PJ6Uw8Q.png 640w, https://miro.medium.com/max/1400/1*gRascgVb73d-jN-PJ6Uw8Q.png 700w" sizes="700px">
+</p>
+<p><strong><code>Authentication</code></strong> — Verify the user is who they say they are. Login form, Ambient authority(eg: HTTP cookies), HTTP authentication.</p>
+<p><strong><code>Authorization</code></strong> — Decide if a user has permission to access a resource. Access control lists(ACLs), Capability URLs.</p>
+<p><strong>Network-based guessing attacks.</strong></p>
+<ul>
+<li>
+<p><strong><code>Brute force</code></strong>: Testing multiple passwords from a dictionary or other source against a single account</p>
+</li>
+<li>
+<p><strong><code>Credential stuffing</code></strong>: Testing username/password pairs obtained from the breach of another site</p>
+</li>
+<li>
+<p><strong><code>Password spraying</code></strong>: Testing a single weak password against a large number of different accounts</p>
+</li>
+</ul>
+<p><strong>Network-based guessing defenses</strong></p>
+<ul>
+<li>
+<p>Limit the rate at which an attacker can make authentication attempts, or delay incorrect attempts</p>
+</li>
+<li>
+<p>Keep track of IP addresses and limit the number of unsuccessful attempts</p>
+</li>
+<li>
+<p>Temporarily ban the user after too many unsuccessful attempts</p>
+</li>
+</ul>
+<p><strong>CAPTCHA</strong> — Completely Automated Public Turing test to tell Computers and Humans Apart. Difficult for visually impaired users. It takes the average person approximately 10 seconds to solve a typical CAPTCHA. Attackers can proxy CAPTCHA requests to another user in real-time. Dark market services offer cheap CAPTCHA solving services powered by humans.</p>
+<blockquote>
+<p>Never, ever, ever store passwords in plain text.</p>
+</blockquote>
+<p>In a data breach, the attacker will learn all users’ passwords and be able to attack their accounts on other sites, assuming the user has re-used their password across sites (very likely). Has the plaintext password, then store the hash in the database.</p>
+<img alt="" class="nn to fe en ej jq w c" width="700" height="401" role="presentation" src="https://miro.medium.com/max/1400/1*ZcfEGwvoHT5QXtVW1SxQtg.png" srcset="https://miro.medium.com/max/552/1*ZcfEGwvoHT5QXtVW1SxQtg.png 276w, https://miro.medium.com/max/1104/1*ZcfEGwvoHT5QXtVW1SxQtg.png 552w, https://miro.medium.com/max/1280/1*ZcfEGwvoHT5QXtVW1SxQtg.png 640w, https://miro.medium.com/max/1400/1*ZcfEGwvoHT5QXtVW1SxQtg.png 700w" sizes="700px">
+</p>
+<p>However, there is a problem with hashing that users who have same passwords are easy to spot. <strong><code>Password salt</code></strong> — A <em><strong>salt</strong></em> is a fixed-length cryptographically-strong random value that can be stored alongside the password (salt is usually 16, 32, or 64 bytes). Concatenate the salt and the password before hashing it</p>
+<p><strong><code>bcrypt</code></strong> — Password hashing function that automatically handles all password salting complexity and includes it in the hash output</p>
+<p><strong><code>Microsoft</code></strong>: “Based on our studies, your account is more than 99.9% less likely to be compromised if you use Multi-factor authentication”</p>
+<h3 id="safe-coding-practices"><a class="header" href="#safe-coding-practices">Safe coding practices</a></h3>
+<p><strong><code>Complexity is the enemy of security</code></strong> — The goal of abstractions is to hide complexity from the developer. The more edge cases an abstraction has the “leakier” it is.</p>
+<p><strong><code>Explicit code is better than clever code</code></strong> — Writing overly clever, succinct, or “magic” code can increase the complexity</p>
+<p><strong><code>Fail early</code></strong> — Ignore the Robustness Principle and do the opposite</p>
+<p><strong><code>Code defensively</code></strong> — Your assumptions may be violated, so always verify them upfront</p>
+<h3 id="dns-rebinding"><a class="header" href="#dns-rebinding">DNS Rebinding</a></h3>
+<img alt="" class="nn to fe en ej jq w c" width="700" height="404" role="presentation" src="https://miro.medium.com/max/1400/1*LLo4Uh1JWu6Uhm4LpLHG-w.png" srcset="https://miro.medium.com/max/552/1*LLo4Uh1JWu6Uhm4LpLHG-w.png 276w, https://miro.medium.com/max/1104/1*LLo4Uh1JWu6Uhm4LpLHG-w.png 552w, https://miro.medium.com/max/1280/1*LLo4Uh1JWu6Uhm4LpLHG-w.png 640w, https://miro.medium.com/max/1400/1*LLo4Uh1JWu6Uhm4LpLHG-w.png 700w" sizes="700px">
+</p>
+<p><strong><code>DNS rebinding attack</code></strong> — Allows a remote attacker to bypass <strong><code>CORS</code></strong> rules, bypass the victim’s network firewall and use their web browser as a proxy to communicate directly with vulnerable servers on the local network. <strong><code>DNS rebinding</code></strong> exploits limitation in the <strong><code>Same Origin Policy</code></strong>.</p>
+<p><strong><code>Origin is protocol + hostname + port</code></strong>. The actual IP address that the hostname resolves to is not included.</p>
+<blockquote>
+<p>Don’t ship a local HTTP server with your software. If you do, you better understand DNS rebinding attacks</p>
+</blockquote>
+<p><strong><code>Prevent DNS rebinding</code></strong> — DNS rebinding allows the attacker to trick the browser into thinking the local victim server is the same origin to attacker.com. So ensure that the Host header is not for a random origin, but instead for localhost or equivalent. We cannot rely on Origin header since it is not sent for same origin requests</p>
+<h3 id="cs-253-key-ideas"><a class="header" href="#cs-253-key-ideas">CS 253 Key ideas</a></h3>
+<ul>
+<li>
+<p>Think like an attacker!</p>
+</li>
+<li>
+<p>Never trust user input — always sanitize it, at time of use</p>
+</li>
+<li>
+<p>Use defense-in-depth — provide redundancy in case security controls fail</p>
+</li>
+<li>
+<p>Salt and hash user passwords — “just use bcrypt!”</p>
+</li>
+<li>
+<p>Beware ambient authority — use SameSite cookies!</p>
+</li>
+<li>
+<p>Don’t write clever code — explicit code is safer than magical code</p>
+</li>
+<li>
+<p>Dangerous code should look dangerous — make it stand out</p>
+</li>
+<li>
+<p>You can never be too paranoid — practice constant vigilance</p>
+</li>
+</ul>
+<p>❤</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                        
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                            </nav>
+
+        </div>
+
+        
+        
+        
+                <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+        
+                <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+        
+    </body>
+</html>
