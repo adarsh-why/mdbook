@@ -19,4 +19,4 @@ jobs:
     - name: install mdbook
       run: cargo install mdbook
     - name: build mdbook
-      run: mdbook build
+      run: mdbook build -d ./book
