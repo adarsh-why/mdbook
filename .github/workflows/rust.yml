@@ -19,8 +19,13 @@ jobs:
     - name: install mdbook
       run: |
         mkdir book
-        (test -x $HOME/.cargo/bin/cargo-install-update || cargo install cargo-update)
-        (test -x $HOME/.cargo/bin/mdbook || cargo install --vers "^0.3" mdbook)
-        cargo install-update -a
+        cargo install mdbook
     - name: build mdbook
       run: mdbook build
+      
+    - name: Update resources
+    uses: test-room-7/action-update-file@v1
+    with:
+        file-path: /book
+        commit-msg: Update resources
+      github-token: ${{ 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 }}
