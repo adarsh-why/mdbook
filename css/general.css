@@ -175,3 +175,9 @@ blockquote {
     margin: 5px 0px;
     font-weight: bold;
 }
+
+@media screen and (max-width: 1024px) {
+    #search-toggle {
+        display: none;
+    }
+}
